@@ -1,3 +1,14 @@
+#### 6.0
+
+- Forked from the original project by @zacronos that was left unmaintained
+- Updated dependencies
+- Improved type definitions
+
+#### 5.2
+Added `timeout` setting, and allow `COMPACT` format.
+
+#### 5.1
+Added TypeScript typings.
 
 #### 5.0
 A significant amount of internal cleanup, resulting in more consistent code and API.  There are some minor breaking
