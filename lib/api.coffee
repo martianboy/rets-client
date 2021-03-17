@@ -2,8 +2,6 @@
 ### jshint -W097 ###
 'use strict'
 
-Promise = require('bluebird')
-
 Client = require('./client')
 replyCodes = require('./utils/replyCodes')
 errors = require('./utils/errors')

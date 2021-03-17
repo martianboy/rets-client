@@ -1,4 +1,4 @@
-import * as RetsClient from '../dts/index'
+import * as RetsClient from '../index'
 import { expect } from 'chai'
 const rets: typeof RetsClient = require('../dist/api')
 

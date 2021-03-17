@@ -3,7 +3,6 @@
 'use strict'
 
 MultipartParser = require('formidable/lib/multipart_parser').MultipartParser
-Promise = require('bluebird')
 through2 = require('through2')
 debug = require('debug')('rets-client:multipart')
 debugVerbose = require('debug')('rets-client:multipart:verbose')

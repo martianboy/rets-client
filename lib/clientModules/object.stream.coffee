@@ -2,8 +2,6 @@
 ### jshint -W097 ###
 'use strict'
 
-
-Promise = require('bluebird')
 through2 = require('through2')
 base64 = require('base64-stream') 
 

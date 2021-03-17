@@ -24,6 +24,7 @@ class RetsError extends Error
   
 class RetsReplyError extends RetsError
   constructor: (retsContext, @replyCode, @replyText) ->
+    super()
     @name = 'RetsReplyError'
     @replyTag = if replyCodes.tagMap[@replyCode]? then replyCodes.tagMap[@replyCode] else 'unknown reply code'
     {@retsMethod, @queryOptions, @headerInfo} = retsContext
@@ -33,6 +34,7 @@ class RetsReplyError extends RetsError
 
 class RetsServerError extends RetsError
   constructor: (retsContext, @httpStatus, @httpStatusMessage) ->
+    super()
     @name = 'RetsServerError'
     {@retsMethod, @queryOptions, @headerInfo} = retsContext
     @message = "RETS Server error while attempting #{@retsMethod} - HTTP Status #{@httpStatus} returned (#{@httpStatusMessage})"
@@ -41,6 +43,7 @@ class RetsServerError extends RetsError
 
 class RetsProcessingError extends RetsError
   constructor: (retsContext, @sourceError) ->
+    super()
     @name = 'RetsProcessingError'
     {@retsMethod, @queryOptions, @headerInfo} = retsContext
     @message = "Error while processing RETS response for #{@retsMethod} - #{getErrorMessage(@sourceError)}"
@@ -49,11 +52,13 @@ class RetsProcessingError extends RetsError
 
 class RetsParamError extends RetsError
   constructor: (@message) ->
+    super()
     @name = 'RetsParamError'
     Error.captureStackTrace(this, RetsParamError)
 
 class RetsPermissionError extends RetsError
   constructor: (missing = []) ->
+    super()
     @name = 'RetsPermissionError'
     @message = "Login was successful, but this account does not have the proper permissions."
     if missing.length

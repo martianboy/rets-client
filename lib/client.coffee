@@ -3,8 +3,8 @@
 'use strict'
 
 crypto = require('crypto')
-request = require('request')
-Promise = require('bluebird')
+request = require('request-promise-native')
+{ promisify } = require('util')
 
 metadata = require('./clientModules/metadata')
 search = require('./clientModules/search')
@@ -70,7 +70,7 @@ class Client
         defaults.tunnel = @settings.useTunnel
     
     @baseRetsSession = request.defaults defaults
-    @loginRequest = Promise.promisify(@baseRetsSession.defaults(uri: @settings.loginUrl))
+    @loginRequest = promisify(@baseRetsSession.defaults(uri: @settings.loginUrl))
 
 
   login: () ->
@@ -97,7 +97,7 @@ class Client
         missingPermissions.push URL_KEYS.SEARCH
       if @urls[URL_KEYS.GET_OBJECT]
         @objects = object(@baseRetsSession.defaults(uri: @urls[URL_KEYS.GET_OBJECT]), @)
-      @logoutRequest = Promise.promisify(@baseRetsSession.defaults(uri: @urls[URL_KEYS.LOGOUT]))
+      @logoutRequest = promisify(@baseRetsSession.defaults(uri: @urls[URL_KEYS.LOGOUT]))
       if !hasPermissions
         throw new errors.RetsPermissionError(missingPermissions)
         

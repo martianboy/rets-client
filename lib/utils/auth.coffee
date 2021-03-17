@@ -2,8 +2,6 @@
 ### jshint -W097 ###
 'use strict'
 
-Promise = require('bluebird')
-
 retsParsing = require('./retsParsing')
 retsHttp = require('./retsHttp')
 headersHelper = require('./headers')

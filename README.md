@@ -257,7 +257,7 @@ rets.getAutoLogoutClient(clientSettings, function (client) {
 ```javascript
 var rets = require('rets-client');
 var through2 = require('through2');
-var Promise = require('bluebird');
+var ;
   
 // this function doesn't do much, it's just a placeholder for whatever you want to do with the results 
 function doAsyncProcessing(row, index, callback) {

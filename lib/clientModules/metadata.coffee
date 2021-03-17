@@ -2,8 +2,8 @@
 ### jshint -W097 ###
 'use strict'
 
-Promise = require('bluebird')
 through2 = require('through2')
+{ promisify } = require('util')
 
 replyCodes = require('../utils/replyCodes')
 retsHttp = require('../utils/retsHttp')
@@ -141,7 +141,7 @@ module.exports = (_retsSession, _client) ->
     () -> _getMetadataImpl(_retsSession, type, options, _client)
   
   
-  retsSession: Promise.promisify(_retsSession)
+  retsSession: promisify(_retsSession)
   client: _client
   getMetadata: getMetadata
   getSystem: getSystem

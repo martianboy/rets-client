@@ -3,7 +3,6 @@
 'use strict'
 
 WritableStreamBuffer = require('stream-buffers').WritableStreamBuffer
-Promise = require('bluebird')
 through2 = require('through2')
 
 multipart = require('../utils/multipart')

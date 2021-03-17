@@ -2,8 +2,8 @@
 ### jshint -W097 ###
 'use strict'
 
-Promise = require('bluebird')
 through2 = require('through2')
+{ promisify } = require('util')
 
 queryOptionHelpers = require('../utils/queryOptions')
 errors = require('../utils/errors')
@@ -91,7 +91,7 @@ query = (resourceType, classType, queryString, options={}, parserEncoding='UTF-8
 module.exports = (_retsSession, _client) ->
   if !_retsSession
     throw new errors.RetsParamError('System data not set; invoke login().')
-  retsSession: Promise.promisify(_retsSession)
+  retsSession: promisify(_retsSession)
   client: _client
   searchRets: searchRets
   query: query

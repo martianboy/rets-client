@@ -2,7 +2,6 @@
 ### jshint -W097 ###
 'use strict'
 
-Promise = require('bluebird')
 debug = require('debug')('rets-client:main')
 expat = require('node-expat')
 
