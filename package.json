@@ -8,8 +8,10 @@
     "base64-stream": "^1.0.0",
     "bufferstream": "^0.6.2",
     "debug": "^4.3.1",
+    "es6-promise-try": "^1.0.2",
     "formidable": "~1.2.2",
     "node-expat": "^2.4.0",
+    "request": "^2.88.2",
     "request-promise-native": "^1.0.9",
     "stream-buffers": "^3.0.2",
     "through2": "^4.0.2"
@@ -32,8 +34,8 @@
     "index.js"
   ],
   "scripts": {
-    "pretest": "coffee --compile --output dist/ lib/ && tsc --noEmit",
     "test": "node_modules/mocha/bin/_mocha --require ts-node/register test/*.ts",
+    "pretest": "coffee --compile --output dist/ lib/ && tsc --noEmit",
     "prepare": "npm run test",
     "dev": "coffee --watch --output dist lib/"
   },

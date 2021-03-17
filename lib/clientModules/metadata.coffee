@@ -3,7 +3,7 @@
 'use strict'
 
 through2 = require('through2')
-{ promisify } = require('util')
+promiseTry = require('es6-promise-try');
 
 replyCodes = require('../utils/replyCodes')
 retsHttp = require('../utils/retsHttp')
@@ -53,7 +53,7 @@ _getMetadataImpl = (retsSession, type, queryOptions, client) -> new Promise (res
 # @param format Data format (i.e. COMPACT, COMPACT-DECODED), defaults to 'COMPACT'
 ###
 
-getMetadata = (type, id, format='COMPACT') -> Promise.try () =>
+getMetadata = (type, id, format='COMPACT') -> promiseTry () =>
   if !type
     throw new errors.RetsParamError('Metadata type is required')
   if !id
@@ -123,7 +123,7 @@ module.exports = (_retsSession, _client) ->
   
 
   _getParsedMetadataFactory = (type, format='COMPACT') ->
-    (id, classType) -> Promise.try () ->
+    (id, classType) -> promiseTry () ->
       if !id
         throw new errors.RetsParamError('Resource type id is required (or for some types of metadata, "0" retrieves for all resource types)')
       options =
@@ -141,7 +141,7 @@ module.exports = (_retsSession, _client) ->
     () -> _getMetadataImpl(_retsSession, type, options, _client)
   
   
-  retsSession: promisify(_retsSession)
+  retsSession: _retsSession
   client: _client
   getMetadata: getMetadata
   getSystem: getSystem

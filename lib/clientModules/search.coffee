@@ -3,7 +3,7 @@
 'use strict'
 
 through2 = require('through2')
-{ promisify } = require('util')
+promiseTry = require('es6-promise-try');
 
 queryOptionHelpers = require('../utils/queryOptions')
 errors = require('../utils/errors')
@@ -30,7 +30,7 @@ errors = require('../utils/errors')
 #       limit:"NONE"
 ###
 
-searchRets = (_queryOptions) -> Promise.try () =>
+searchRets = (_queryOptions) -> promiseTry () =>
   queryOptions = queryOptionHelpers.normalizeOptions(_queryOptions)
   retsHttp.callRetsMethod({retsMethod: 'search', queryOptions}, @retsSession, @client)
   .then (retsContext) ->
@@ -91,7 +91,7 @@ query = (resourceType, classType, queryString, options={}, parserEncoding='UTF-8
 module.exports = (_retsSession, _client) ->
   if !_retsSession
     throw new errors.RetsParamError('System data not set; invoke login().')
-  retsSession: promisify(_retsSession)
+  retsSession: _retsSession
   client: _client
   searchRets: searchRets
   query: query

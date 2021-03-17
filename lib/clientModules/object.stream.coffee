@@ -4,6 +4,7 @@
 
 through2 = require('through2')
 base64 = require('base64-stream') 
+promiseTry = require('es6-promise-try');
 
 retsHttp = require('../utils/retsHttp')
 retsParsing = require('../utils/retsParsing')
@@ -114,7 +115,7 @@ _annotateIds = (ids, suffix) ->
 #     an array, or an object.  This is the only method that lets you specify object UIDs instead of resourceIds.
 ###
 
-getObjects = (resourceType, objectType, ids, _options={}) -> Promise.try () =>
+getObjects = (resourceType, objectType, ids, _options={}) -> promiseTry () =>
   if !resourceType
     throw new errors.RetsParamError('Resource type id is required')
   if !objectType

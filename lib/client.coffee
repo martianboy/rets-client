@@ -4,7 +4,7 @@
 
 crypto = require('crypto')
 request = require('request-promise-native')
-{ promisify } = require('util')
+promiseTry = require('es6-promise-try');
 
 metadata = require('./clientModules/metadata')
 search = require('./clientModules/search')
@@ -70,7 +70,7 @@ class Client
         defaults.tunnel = @settings.useTunnel
     
     @baseRetsSession = request.defaults defaults
-    @loginRequest = promisify(@baseRetsSession.defaults(uri: @settings.loginUrl))
+    @loginRequest = @baseRetsSession.defaults(uri: @settings.loginUrl, resolveWithFullResponse: true)
 
 
   login: () ->
@@ -97,7 +97,7 @@ class Client
         missingPermissions.push URL_KEYS.SEARCH
       if @urls[URL_KEYS.GET_OBJECT]
         @objects = object(@baseRetsSession.defaults(uri: @urls[URL_KEYS.GET_OBJECT]), @)
-      @logoutRequest = promisify(@baseRetsSession.defaults(uri: @urls[URL_KEYS.LOGOUT]))
+      @logoutRequest = @baseRetsSession.defaults(uri: @urls[URL_KEYS.LOGOUT])
       if !hasPermissions
         throw new errors.RetsPermissionError(missingPermissions)
         
@@ -115,11 +115,11 @@ class Client
       @logoutHeaderInfo = retsContext.headerInfo
 
 
-Client.getAutoLogoutClient = (settings, handler) -> Promise.try () ->
+Client.getAutoLogoutClient = (settings, handler) -> promiseTry () ->
   client = new Client(settings)
   client.login()
   .then () ->
-    Promise.try () ->
+    promiseTry () ->
       handler(client)
     .finally () ->
       client.logout()

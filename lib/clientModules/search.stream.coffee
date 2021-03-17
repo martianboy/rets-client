@@ -3,6 +3,7 @@
 'use strict'
 
 through2 = require('through2')
+promiseTry = require('es6-promise-try');
 
 queryOptionHelpers = require('../utils/queryOptions')
 retsHttp = require('../utils/retsHttp')
@@ -28,7 +29,7 @@ errors = require('../utils/errors')
 #
 ###
 
-searchRets = (_options, responseHandler) -> Promise.try () =>
+searchRets = (_options, responseHandler) -> promiseTry () =>
   queryOptions = queryOptionHelpers.normalizeOptions(_options)
   retsHttp.streamRetsMethod({retsMethod: 'search', queryOptions, responseHandler, parser: through2()}, @retsSession, @client)
   .then (retsContext) ->

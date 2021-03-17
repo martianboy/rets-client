@@ -47,8 +47,8 @@ export class Client {
    * https://github.com/sbruno81/rets-client/blob/master/lib/clientModules/object.coffee
    */
   objects: IClientObjects
-  login: Promise<any>
-  logout: Promise<any>
+  login(): Promise<any>
+  logout(): Promise<any>
 }
 /**
  * https://github.com/sbruno81/rets-client/blob/master/lib/utils/queryOptions.coffee

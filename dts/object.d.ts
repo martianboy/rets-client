@@ -17,7 +17,10 @@ export interface IClientObjects {
         options?: IGetObjectOptions): Promise<IObjectsStreamGetObjectsResponse>
 
     }
+
+    getObjects (resourceType: string, objectType: string, ids?: ObjectIds, options?: IGetObjectOptions): Promise<IGetObjectsResponse>
     getAllObjects (resourceType: string, objectType: string, ids?: ObjectIds, options?: IGetObjectOptions): Promise<IGetAllObjectsResponse>
+    getPreferredObjects (resourceType: string, objectType: string, ids?: ObjectIds, options?: IGetObjectOptions): Promise<IGetPreferredObjectsResponse>
 }
 /**
  * https://github.com/sbruno81/rets-client/blob/master/lib/clientModules/object.coffee#L66
@@ -99,6 +102,11 @@ export interface IObjectsStreamErrorEvent extends IObjectsStreamEvent {
 export interface IObjectsStreamHeaderInfoEvent extends IObjectsStreamEvent {
   type: 'headerInfo'
   headerInfo: IObjectHeaderInfo
+}
+
+export interface IGetObjectsResponse {
+  data: Buffer;
+  headerInfo: IObjectHeaderInfo;
 }
 
 export interface IGetAllObjectsResponse {

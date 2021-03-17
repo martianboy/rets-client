@@ -4,6 +4,7 @@
 
 debug = require('debug')('rets-client:main')
 expat = require('node-expat')
+promiseTry = require('es6-promise-try');
 
 errors = require('./errors')
 headersHelper = require('./headers')
@@ -11,7 +12,7 @@ headersHelper = require('./headers')
 
 callRetsMethod = (retsContext, promisifiedRetsSession, client) ->
   debug("RETS #{retsContext.retsMethod}:", retsContext.queryOptions)
-  Promise.try () ->
+  promiseTry () ->
     request = {}
     if client.settings.method == 'POST'
       request.form = retsContext.queryOptions
@@ -21,13 +22,13 @@ callRetsMethod = (retsContext, promisifiedRetsSession, client) ->
   .catch (error) ->
     debug("RETS #{retsContext.retsMethod} error:", error)
     Promise.reject(error)
-  .spread (response, body) ->
+  .then (response) ->
     if response.statusCode != 200
       error = new errors.RetsServerError(retsContext, response.statusCode, response.statusMessage)
       debug("RETS #{retsContext.retsMethod} error: #{error.message}")
       return Promise.reject(error)
     retsContext.headerInfo = headersHelper.processHeaders(response.rawHeaders)
-    retsContext.body = body
+    retsContext.body = response.body
     retsContext.response = response
     return retsContext
 
