@@ -20,7 +20,7 @@ export interface IClientObjects {
 
     getObjects (resourceType: string, objectType: string, ids?: ObjectIds, options?: IGetObjectOptions): Promise<IGetObjectsResponse>
     getAllObjects (resourceType: string, objectType: string, ids?: ObjectIds, options?: IGetObjectOptions): Promise<IGetAllObjectsResponse>
-    getPreferredObjects (resourceType: string, objectType: string, ids?: ObjectIds, options?: IGetObjectOptions): Promise<IGetPreferredObjectsResponse>
+    getPreferredObjects (resourceType: string, objectType: string, ids?: ObjectIds, options?: IGetObjectOptions): Promise<IGetAllObjectsResponse>
 }
 /**
  * https://github.com/sbruno81/rets-client/blob/master/lib/clientModules/object.coffee#L66
