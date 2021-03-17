@@ -41,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zacronos/rets-client.git"
+    "url": "https://github.com/martianboy/rets-client.git"
   },
   "keywords": [
     "rets",
@@ -60,10 +60,11 @@
   "author": "Joe Ibershoff <joe@ibershoff.com>",
   "contributors": [
     "Joe Ibershoff <joe@ibershoff.com>",
-    "Steve Bruno <stevenrbruno@icloud.com>"
+    "Steve Bruno <stevenrbruno@icloud.com>",
+    "Abbas Mashayekh <martianboy2005@gmail.com>"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zacronos/rets-client/issues"
+    "url": "https://github.com/martianboy/rets-client/issues"
   }
 }
