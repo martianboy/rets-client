@@ -51,6 +51,7 @@ export interface IGetObjectOptions {
 export type ObjectIds = string[] | string | Object
 export interface IObjectData {
   headerInfo: IObjectHeaderInfo
+  data: Buffer
 }
 export interface IObjectsStreamGetObjectsResponse {
   objectStream: IObjectsStream
