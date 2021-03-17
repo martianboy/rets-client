@@ -86,18 +86,18 @@ class Client
       hasPermissions = true
       missingPermissions = []
       if @urls[URL_KEYS.GET_METADATA]
-        @metadata = metadata(@baseRetsSession.defaults(uri: @urls[URL_KEYS.GET_METADATA]), @)
+        @metadata = metadata(@baseRetsSession.defaults(uri: @urls[URL_KEYS.GET_METADATA], resolveWithFullResponse: true), @)
       else
         hasPermissions = false
         missingPermissions.push URL_KEYS.GET_METADATA
       if @urls[URL_KEYS.SEARCH]
-        @search = search(@baseRetsSession.defaults(uri: @urls[URL_KEYS.SEARCH]), @)
+        @search = search(@baseRetsSession.defaults(uri: @urls[URL_KEYS.SEARCH], resolveWithFullResponse: true), @)
       else
         hasPermissions = false
         missingPermissions.push URL_KEYS.SEARCH
       if @urls[URL_KEYS.GET_OBJECT]
-        @objects = object(@baseRetsSession.defaults(uri: @urls[URL_KEYS.GET_OBJECT]), @)
-      @logoutRequest = @baseRetsSession.defaults(uri: @urls[URL_KEYS.LOGOUT])
+        @objects = object(@baseRetsSession.defaults(uri: @urls[URL_KEYS.GET_OBJECT], resolveWithFullResponse: true), @)
+      @logoutRequest = @baseRetsSession.defaults(uri: @urls[URL_KEYS.LOG, resolveWithFullResponse: trueOUT])
       if !hasPermissions
         throw new errors.RetsPermissionError(missingPermissions)
         
