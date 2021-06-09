@@ -12,7 +12,7 @@ errors = require('../utils/errors')
 
 
 _getMetadataImpl = (retsSession, type, queryOptions, client) -> new Promise (resolve, reject) ->
-  retsContext = retsParsing.getStreamParser({retsMethod: 'getMetadata', queryOptions}, type)
+  retsContext = retsParsing.getSaxStreamParser({retsMethod: 'getMetadata', queryOptions}, type)
   retsHttp.streamRetsMethod(retsContext, retsSession, client)
 
   result =

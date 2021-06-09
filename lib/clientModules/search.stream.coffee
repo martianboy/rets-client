@@ -75,7 +75,7 @@ query = (resourceType, classType, queryString, _options={}, rawData=false, parse
     delete mainOptions.format
   queryOptions = queryOptionHelpers.normalizeOptions(mainOptions)
 
-  retsContext = retsParsing.getStreamParser({retsMethod: 'search', queryOptions}, null, rawData, parserEncoding)
+  retsContext = retsParsing.getSaxStreamParser({retsMethod: 'search', queryOptions}, null, rawData, parserEncoding)
   retsHttp.streamRetsMethod(retsContext, @retsSession, @client)
 
   return {
