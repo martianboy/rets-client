@@ -1,6 +1,6 @@
 {
   "name": "@rechat/rets-client",
-  "version": "6.1.0",
+  "version": "6.2.0",
   "description": "A RETS client (Real Estate Transaction Standard).",
   "main": "index.js",
   "types": "dts/index.d.ts",
