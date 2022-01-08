@@ -3,7 +3,7 @@
   "version": "6.2.0",
   "description": "A RETS client (Real Estate Transaction Standard).",
   "main": "index.js",
-  "types": "dts/index.d.ts",
+  "types": "index.d.ts",
   "dependencies": {
     "base64-stream": "^1.0.0",
     "bufferstream": "^0.6.2",
@@ -32,7 +32,8 @@
   "files": [
     "dist",
     "dts",
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "scripts": {
     "test": "node_modules/mocha/bin/_mocha --require ts-node/register test/*.ts",

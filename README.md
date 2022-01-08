@@ -23,7 +23,7 @@ Added TypeScript typings.
 #### 5.0
 A significant amount of internal cleanup, resulting in more consistent code and API.  There are some minor breaking
 changes, but they're small enough that migrating to 5.0 shouldn't be much effort.  The
-[Example Usage](https://github.com/sbruno81/rets-client#example-usage) has been updated to show 5.x patterns. 
+[Example Usage](https://github.com/sbruno81/rets-client#example-usage) has been updated to show 5.x patterns.
 
 - object stream queries now have events with a `type` field to make discrimination easier, with the following
 possibilities:
@@ -52,7 +52,7 @@ Future development will include an optional stream-based interface for object do
 non-streaming object methods.
 
 This library is written primarily in CoffeeScript, but may be used just as easily in a Node app using Javascript or
-CoffeeScript.  Promises in this module are provided by [Bluebird](https://github.com/petkaantonov/bluebird).
+CoffeeScript.
 
 The original module was developed against a server running RETS v1.7.2, so there may be incompatibilities with other
 versions.  However, we want this library to work against any RETS servers that are in current use, so issue tickets
@@ -141,7 +141,7 @@ function outputFields(obj, opts) {
 var rets = require('rets-client');
 var fs = require('fs');
 var photoSourceId = '12345'; // <--- dummy example ID!  this will usually be a MLS number / listing id
-  
+
 // establish connection to RETS server which auto-logs out when we're done
 rets.getAutoLogoutClient(clientSettings, function (client) {
   console.log("===================================");
@@ -262,8 +262,8 @@ rets.getAutoLogoutClient(clientSettings, function (client) {
 var rets = require('rets-client');
 var through2 = require('through2');
 var ;
-  
-// this function doesn't do much, it's just a placeholder for whatever you want to do with the results 
+
+// this function doesn't do much, it's just a placeholder for whatever you want to do with the results
 function doAsyncProcessing(row, index, callback) {
   console.log("-------- Result " + index + " --------");
   outputFields(row);
