@@ -13,6 +13,8 @@ export interface IClientMetadata {
 
   getLookupTypes (resourceId: string, field: string): Promise<IGetTableResponse>
 
+  getForeignKeys (resourceId: string): Promise<IGetTableResponse>
+
   getAllClass (): Promise<IGetTableResponse>
 
   getAllTable (): Promise<IGetTableResponse>
@@ -22,6 +24,8 @@ export interface IClientMetadata {
   getAllLookups (): Promise<IGetTableResponse>
 
   getAllLookupTypes (): Promise<MetadataLookupTypes>
+
+  getAllForeignKeys (): Promise<IGetTableResponse>
 }
 
 interface MetadataLookupTypes {

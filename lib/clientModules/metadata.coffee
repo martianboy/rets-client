@@ -146,13 +146,13 @@ module.exports = (_retsSession, _client) ->
   getMetadata: getMetadata
   getSystem: getSystem
   getResources:       _getParsedMetadataFactory('METADATA-RESOURCE').bind(null, '0')
-  getForeignKeys:     _getParsedMetadataFactory('METADATA-FOREIGNKEYS')
+  getForeignKeys:     _getParsedMetadataFactory('METADATA-FOREIGN_KEYS')
   getClass:           _getParsedMetadataFactory('METADATA-CLASS')
   getTable:           _getParsedMetadataFactory('METADATA-TABLE')
   getLookups:         _getParsedMetadataFactory('METADATA-LOOKUP')
   getLookupTypes:     _getParsedMetadataFactory('METADATA-LOOKUP_TYPE')
   getObject:          _getParsedMetadataFactory('METADATA-OBJECT')
-  getAllForeignKeys:  _getParsedAllMetadataFactory('METADATA-FOREIGNKEYS')
+  getAllForeignKeys:  _getParsedAllMetadataFactory('METADATA-FOREIGN_KEYS')
   getAllClass:        _getParsedAllMetadataFactory('METADATA-CLASS')
   getAllTable:        _getParsedAllMetadataFactory('METADATA-TABLE')
   getAllLookups:      _getParsedAllMetadataFactory('METADATA-LOOKUP')
